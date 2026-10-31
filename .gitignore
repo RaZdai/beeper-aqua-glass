@@ -1,0 +1,5 @@
+# Apple's emoji font must never be committed: users download and build it locally
+*.ttf
+*.ttc
+*.otf
+__pycache__/

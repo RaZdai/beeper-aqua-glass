@@ -1,0 +1,20 @@
+/* BEGIN aqua-glass-emoji */
+/* Apple Color Emoji for Beeper on Windows/Linux (optional kit: emoji/ in Beeper Aqua Glass).
+   Loads the rebuilt font as a web font: Windows will not register it as a system font (it is
+   colour bitmaps only), and the rebuilt copy carries the sequence joins Chromium can use.
+   unicode-range limits it to emoji: ordinary text never touches it. Left out on purpose:
+   symbols that are text by default (© ® ™ ‼ ⁉ ℹ, arrows, ▪ ▶ ◀, 〰 〽 ㊗ ㊙ Ⓜ) and keycaps (1️⃣),
+   whose base characters are plain digits and # *. Do not use this block on macOS. */
+@font-face {
+  font-family: "Apple Color Emoji";
+  src: url("__FONT_URL__") format("truetype");
+  font-display: swap;
+  unicode-range: U+200D, U+231A-231B, U+2328, U+23CF, U+23E9-23F3, U+23F8-23FA, U+25FB-25FE,
+    U+2600-27BF, U+2B1B-2B1C, U+2B50, U+2B55, U+FE0F, U+1F000-1FAFF, U+E0020-E007F;
+}
+
+/* With the range above it only ever answers for emoji, so it can lead the font list */
+:root {
+  --font-family: "Apple Color Emoji", "SF Pro Display", "SF Pro Text", "Segoe UI Variable Display", "Segoe UI", system-ui, TwemojiFlags, "Segoe UI Emoji", "Segoe UI Symbol", Twemoji, sans-serif, "Noto Color Emoji" !important;
+}
+/* END aqua-glass-emoji */

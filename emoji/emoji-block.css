@@ -13,6 +13,25 @@
     U+2600-27BF, U+2B1B-2B1C, U+2B50, U+2B55, U+FE0F, U+1F000-1FAFF, U+E0020-E007F;
 }
 
+/* Inline emoji (inside a sentence) render about 25% larger, as in Apple's Messages: at the same
+   size as the text they read small next to it. A second face over the same file (loaded once)
+   carries size-adjust and is used only for inline text, so emoji-only messages, reactions and the
+   emoji picker keep their size. Line height is fixed, so bubbles do not grow. */
+@font-face {
+  font-family: "Apple Color Emoji Inline";
+  src: url("__FONT_URL__") format("truetype");
+  font-display: swap;
+  size-adjust: 125%;
+  unicode-range: U+200D, U+231A-231B, U+2328, U+23CF, U+23E9-23F3, U+23F8-23FA, U+25FB-25FE,
+    U+2600-27BF, U+2B1B-2B1C, U+2B50, U+2B55, U+FE0F, U+1F000-1FAFF, U+E0020-E007F;
+}
+
+.message-container:not(.type-emoji) .message-text,
+[class*="ThreadListItem-module__preview"],
+.tiptap.ProseMirror {
+  font-family: "Apple Color Emoji Inline", var(--font-family) !important;
+}
+
 /* With the range above it only ever answers for emoji, so it can lead the font list */
 :root {
   --font-family: "Apple Color Emoji", "SF Pro Display", "SF Pro Text", "Segoe UI Variable Display", "Segoe UI", system-ui, TwemojiFlags, "Segoe UI Emoji", "Segoe UI Symbol", Twemoji, sans-serif, "Noto Color Emoji" !important;

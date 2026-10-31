@@ -27,7 +27,7 @@ A dark, translucent theme for [Beeper Desktop](https://www.beeper.com/), inspire
 |---|---|
 | ![Account rail](screenshots/account-rail.png) | ![Settings](screenshots/settings.png) |
 
-**Optional: Apple emoji on Windows.** Beeper on Windows uses Microsoft's emoji. The optional kit in [`emoji/`](emoji/) makes it use Apple Color Emoji instead, including skin tones, families, couples and flags. Normal text is unaffected. On macOS, Beeper already uses Apple emoji.
+**Optional: Apple emoji on Windows.** Beeper on Windows uses Microsoft's emoji. The optional kit in [`emoji/`](emoji/) makes it use Apple Color Emoji instead, including skin tones, families, couples and flags. Emoji inside a sentence are drawn about 25% larger than the text, as in Apple's Messages, without making lines taller. Emoji-only messages, reactions and the emoji picker keep their normal size. Normal text is unaffected. On macOS, Beeper already uses Apple emoji.
 
 ![Apple emoji in Beeper on Windows](screenshots/detail-emoji.png)
 

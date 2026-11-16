@@ -70,12 +70,32 @@ The script installs `fonttools` and `uharfbuzz`, builds the font (about a minute
 
 **Linux:** run `python build_emoji_font.py AppleColorEmoji-Linux.ttf ~/.config/BeeperTexts/AppleColorEmoji.ttf --asar /path/to/beeper/resources/app.asar`. Then append [`emoji/emoji-block.css`](emoji/emoji-block.css) to your `custom.css`, replacing `__FONT_URL__` with `file:///home/<you>/.config/BeeperTexts/AppleColorEmoji.ttf`.
 
+## Optional: tiling window managers (Komorebi, GlazeWM)
+
+On Windows, Beeper opens its popovers (the emoji and reaction picker, hover menus) as separate small windows. A tiling window manager such as [Komorebi](https://github.com/LGUG2Z/komorebi) or [GlazeWM](https://github.com/glzr-io/glazewm) sees each one as a new app window and tiles it beside Beeper, instead of letting it float over the chat. This happens with or without the theme.
+
+A window-manager rule can't fix it reliably: the popovers and Beeper's main window share the same program, window class and, at startup, the same title (`Beeper`), so a rule that catches the popovers also catches Beeper itself.
+
+Beeper already has a mode that draws popovers inside its own window (it uses it on Linux with Wayland). [`tools/inline-popovers.ps1`](tools/inline-popovers.ps1) switches that mode on for Windows:
+
+1. Quit Beeper (tray icon → **Quit**).
+2. From the `tools` folder, run:
+
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\inline-popovers.ps1
+   ```
+
+3. Start Beeper. Popovers now open inside the window, styled as glass by the theme.
+
+The script changes one character in Beeper's app archive (`resources\app.asar`); the file keeps its size and nothing else changes. It saves a backup first as `%APPDATA%\BeeperTexts\app.asar.before-inline-popovers`, and `-Restore` puts it back. Beeper updates replace the archive, so run it again after an update. The script refuses to run if it can't find exactly the code it expects.
+
 ## Compatibility
 
 - **Tested:** built and checked on Beeper Desktop 4.3 on Windows 11, dark mode.
 - **Untested:** macOS, Linux and light mode. The theme should work there, but expect rough edges.
 - **Beeper updates:** Beeper changes its class names now and then. If something looks off after an update, please open an issue with a screenshot.
 - **Native window frame:** on Windows, Beeper uses the normal Windows title bar, which CSS can't style.
+- **Tiling window managers:** see [the optional popover fix](#optional-tiling-window-managers-komorebi-glazewm) above.
 
 ## Customising
 
